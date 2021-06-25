@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: uploader
+  name: uploader
+  namespace: uploader
+spec:
+  selector:
+    matchLabels:
+      app: uploader
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: uploader
+    spec:
+      containers:
+      - image: quay.io/rcook/tools:php-demo
+        imagePullPolicy: IfNotPresent
+        name: tools
+        ports:
+        - containerPort: 8080
+          protocol: TCP
